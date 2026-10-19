@@ -83,6 +83,7 @@ function startTimer() {
   timerId = window.setInterval(() => {
     seconds = Math.min(seconds + 1, 999);
     timerElement.textContent = String(seconds).padStart(3, "0");
+    if (seconds === 999) stopTimer();
   }, 1000);
 }
 
@@ -106,14 +107,20 @@ function renderBoard() {
     button.className = "cell";
     button.setAttribute("role", "gridcell");
 
-    if (cell.isRevealed) {
+    const shouldRevealMine =
+      gameOver && statusElement.dataset.state === "lost" && cell.isMine;
+
+    if (cell.isRevealed || shouldRevealMine) {
       button.classList.add("revealed");
       button.disabled = true;
 
       if (cell.isMine) {
         button.classList.add("mine");
         button.textContent = "✹";
-        button.setAttribute("aria-label", `칸 ${cell.index + 1}, 지뢰`);
+        button.setAttribute(
+          "aria-label",
+          `칸 ${cell.index + 1}, ${cell.isExploded ? "밟은 지뢰" : "지뢰"}`,
+        );
       } else if (cell.adjacentMines > 0) {
         button.dataset.number = String(cell.adjacentMines);
         button.textContent = String(cell.adjacentMines);
