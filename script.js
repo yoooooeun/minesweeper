@@ -12,6 +12,7 @@ const timerElement = document.querySelector("#timer");
 const statusElement = document.querySelector("#game-status");
 const resetButton = document.querySelector("#new-game");
 const difficultySelect = document.querySelector("#difficulty");
+const boardScrollElement = document.querySelector(".board-scroll");
 const recordLabelElement = document.querySelector("#record-label");
 const bestTimeElement = document.querySelector("#best-time");
 const soundToggleButton = document.querySelector("#sound-toggle");
@@ -119,8 +120,8 @@ function updateMineCount() {
 
 function updateBoardLayout() {
   const { rows, columns, label } = getDifficulty();
-  boardElement.style.setProperty("--board-columns", columns);
-  boardElement.style.setProperty("--board-min-width", `${columns * 28 + 18}px`);
+  boardScrollElement.style.setProperty("--board-columns", columns);
+  boardScrollElement.style.setProperty("--board-min-width", `${columns * 20 + 6}px`);
   boardElement.setAttribute(
     "aria-label",
     `${rows}행 ${columns}열 ${label} 지뢰찾기 게임판`,
