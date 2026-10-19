@@ -16,6 +16,20 @@
         <p class="instructions">안전한 칸을 열고, 지뢰가 있는 곳에는 깃발을 꽂으세요.</p>
       </header>
 
+      <section class="game-options" aria-label="게임 설정">
+        <label class="difficulty-control" for="difficulty">
+          난이도
+          <select id="difficulty">
+            <option value="beginner">초급 · 9×9 · 지뢰 10개</option>
+            <option value="intermediate">중급 · 16×16 · 지뢰 40개</option>
+            <option value="expert">고급 · 16×30 · 지뢰 99개</option>
+          </select>
+        </label>
+        <button id="sound-toggle" class="sound-button" type="button" aria-pressed="false">
+          사운드 끔
+        </button>
+      </section>
+
       <section class="game-panel" aria-label="게임 정보">
         <div class="counter" aria-label="남은 지뢰 수">
           <span class="counter-icon" aria-hidden="true">⚑</span>
@@ -30,16 +44,23 @@
         </div>
       </section>
 
+      <section class="record-panel" aria-label="난이도별 최고 기록">
+        <span id="record-label">초급 최고 기록</span>
+        <strong id="best-time">기록 없음</strong>
+      </section>
+
       <p id="game-status" class="game-status" role="status" aria-live="polite">
         칸을 열어 게임을 시작하세요.
       </p>
 
-      <div
-        id="board"
-        class="board"
-        role="grid"
-        aria-label="9행 9열 지뢰찾기 게임판"
-      ></div>
+      <div class="board-scroll">
+        <div
+          id="board"
+          class="board"
+          role="grid"
+          aria-label="9행 9열 지뢰찾기 게임판"
+        ></div>
+      </div>
 
       <footer class="game-footer">
         <span>좌클릭: 칸 열기</span>

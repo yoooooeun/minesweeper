@@ -68,6 +68,50 @@ h1 {
   font-size: 12px;
 }
 
+.game-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.difficulty-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #69776d;
+  font-size: 11px;
+}
+
+.difficulty-control select,
+.sound-button {
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid #e5ebe3;
+  border-radius: 10px;
+  background: #fff;
+  color: #354b39;
+  font: inherit;
+  font-size: 11px;
+}
+
+.difficulty-control select {
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.sound-button {
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.difficulty-control select:focus-visible,
+.sound-button:focus-visible {
+  outline: 3px solid #9ac29d;
+  outline-offset: 2px;
+}
+
 .game-panel {
   display: grid;
   grid-template-columns: 1fr 54px 1fr;
@@ -77,6 +121,23 @@ h1 {
   border: 1px solid #e9eee8;
   border-radius: 14px;
   background: #f8faf7;
+}
+
+.record-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 4px;
+  color: #87918a;
+  font-size: 11px;
+}
+
+.record-panel strong {
+  color: #4d8854;
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .counter {
@@ -155,9 +216,16 @@ h1 {
   font-weight: 800;
 }
 
+.board-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
 .board {
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  width: max(100%, var(--board-min-width, 270px));
+  grid-template-columns: repeat(var(--board-columns, 9), minmax(0, 1fr));
   gap: 4px;
   padding: 8px;
   border: 1px solid #e6ece5;
@@ -178,7 +246,7 @@ h1 {
   color: #527255;
   cursor: pointer;
   font-family: "DM Mono", monospace;
-  font-size: clamp(12px, 4vw, 17px);
+  font-size: clamp(9px, 3vw, 17px);
   font-weight: 500;
   line-height: 1;
   transition: background-color 100ms ease, transform 100ms ease;
@@ -245,6 +313,21 @@ h1 {
   .game-panel {
     gap: 6px;
     padding-inline: 10px;
+  }
+
+  .game-options {
+    gap: 6px;
+  }
+
+  .difficulty-control {
+    gap: 5px;
+    font-size: 10px;
+  }
+
+  .difficulty-control select,
+  .sound-button {
+    padding-inline: 7px;
+    font-size: 10px;
   }
 
   .counter {
